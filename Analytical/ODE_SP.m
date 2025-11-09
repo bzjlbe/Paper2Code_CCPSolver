@@ -11,7 +11,7 @@ g = 10;
 J = m2*(2*r)^2/12;
 
 refine = 4;
-options = odeset('Events',@(t,y) events(t,y,miu,m1,m2),'Refine',refine,'RelTol',1e-6);
+options = odeset('Events',@(t,y) events(t,y),'Refine',refine,'RelTol',1e-6);
 
 tstart = 0;
 tfinal = 4;
@@ -98,3 +98,4 @@ dx = var(4);
 value =  abs(dx)-1e-6;
 isterminal = 1;   % stop the integration
 direction = -1;   % negative direction
+
