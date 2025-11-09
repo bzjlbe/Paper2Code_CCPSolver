@@ -45,8 +45,8 @@ while(1)
     FP_r = cone_complementarity_solver(N, ss_r1, miu, v_t, v_n, n, e_imp, tol, sw_on, J_Fc_F, J_Fi_F, J_Fa_F);
 
     v_end = reshape(J_Fa_F.'*(N*FP_r + ss_r1), 3, size(v_t,1)).';
-    v_t_new = (v_end(:,1).^2 + v_end(:,2).^2).^0.5;
-    mvt2 = miu*v_t_new;
+    v_t(:,n+1) = (v_end(:,1).^2 + v_end(:,2).^2).^0.5;
+    mvt2 = miu*v_t(:,n+1);
     dmvt = mvt1 - mvt2;
 
     % Update contact forces/impulses
@@ -76,4 +76,5 @@ while(1)
         zeta(:,n+1) = (params.alpha_f*d2q(:,n+1) - params.alpha_m*zeta_0(:,n+1))/(1-params.alpha_m);
     end
 end
+
 end
