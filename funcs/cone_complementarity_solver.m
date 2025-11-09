@@ -25,14 +25,14 @@ FP_r = APGD(N, ss_r, tol, miu);
 for k_me = 1:100*sw_on
     b_last = b_all;
     v_end = reshape(J_Fa_F.'*(N*FP_r + ss_r1), 3, size(v_t,1)).';
-    v_t_new = (v_end(:,1).^2 + v_end(:,2).^2).^0.5;
+    v_t(:,n+1) = (v_end(:,1).^2 + v_end(:,2).^2).^0.5;
 
     % Update friction cone boundaries
-    b_con = J_Fc_F*reshape([zeros(size(v_t_new,1),2), miu*v_t_new].', 3*size(v_t_new,1), 1);
+    b_con = J_Fc_F*reshape([zeros(size(v_t(:,n+1),1),2), miu*v_t(:,n+1)].', 3*size(v_t(:,n+1),1), 1);
     if n ~= 0
-        b_imp = J_Fi_F*reshape([zeros(size(v_t_new,1),2), miu*v_t_new + e_imp*min(v_n(:,n),0)].', 3*size(v_t_new,1), 1);
+        b_imp = J_Fi_F*reshape([zeros(size(v_t(:,n+1),1),2), miu*v_t(:,n+1) + e_imp*min(v_n(:,n),0)].', 3*size(v_t(:,n+1),1), 1);
     else
-        b_imp = J_Fi_F*reshape([zeros(size(v_t_new,1),2), miu*v_t_new].', 3*size(v_t_new,1), 1);
+        b_imp = J_Fi_F*reshape([zeros(size(v_t(:,n+1),1),2), miu*v_t(:,n+1)].', 3*size(v_t(:,n+1),1), 1);
     end
     b_all = [b_con; b_imp];
     
@@ -43,4 +43,5 @@ for k_me = 1:100*sw_on
     ss_r = ss_r1 + b_all;
     FP_r = APGD(N, ss_r, tol, miu);
 end
+
 end
