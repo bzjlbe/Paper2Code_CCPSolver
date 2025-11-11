@@ -34,7 +34,8 @@ cone_complementarity_solver.m: Core cone complementarity iterative solver with p
 
 APGD.m: APGD solution algorithm
 
-Setup
+Setup:
+
 Before running the code, add all folder paths to MATLAB.
 Usage To start the program, either create your own main.m or run the files in the figs folder.
 
