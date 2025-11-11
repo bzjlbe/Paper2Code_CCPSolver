@@ -36,6 +36,7 @@ APGD.m: APGD solution algorithm
 
 Setup
 Before running the code, add all folder paths to MATLAB.
+Usage To start the program, either create your own main.m or run the files in the figs folder.
 
 Validation
 Several numerical examples are provided to validate the effectiveness of the proposed prediction-correction method in handling systems with high friction coefficients and significant tangential relative velocity changes.
